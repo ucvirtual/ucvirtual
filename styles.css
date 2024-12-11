@@ -1,0 +1,432 @@
+/* Elimina espacios predeterminados */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #2d2d2d;
+    color: white;
+}
+
+body::before {
+    z-index: 0; /* Debe estar debajo de los demás elementos */
+}
+
+header, footer {
+    background-color: rgba(0, 0, 0, 0.306);
+    text-align: center;
+    padding: 1em;
+    position: relative;
+    z-index: 3; /* Asegura que el header esté al frente */
+}
+
+header .logo img {
+    max-width: 150px;
+}
+.logo img {
+    width: 150px;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+.logo img:hover {
+    transform: scale(1.1);
+    opacity: 0.8;
+}
+
+
+nav {
+    z-index: 4; /* Eleva el menú para que esté encima de otros elementos */
+}
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #333;
+    padding: 1em;
+    position: relative; /* Asegura que el z-index se aplique correctamente */
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.menu > li {
+    position: relative;
+    margin: 0 1em;
+}
+
+.menu > li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 0.5em;
+    display: block;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+.menu > li a:hover {
+    background-color: #555;
+    transform: scale(1.1);
+}
+
+.submenu:hover .dropdown {
+    z-index: 5; /* Asegura que los submenús estén al frente */
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.dropdown {
+    z-index: 5; /* Mantiene los dropdowns al frente */
+    list-style: none;
+    position: absolute;
+    background-color: #333;
+    top: 100%;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    display: none;
+    opacity: 0;
+    transform: translateY(-20px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
+}
+
+.dropdown li {
+    margin: 0;
+    padding: 0;
+}
+
+.dropdown li a {
+    padding: 0.5em 1em;
+    display: block;
+    color: white;
+    text-decoration: none;
+}
+
+.dropdown li a:hover {
+    background-color: #555;
+    transform: scale(1.1);
+}
+
+main {
+    margin: 0;
+    text-align: center;
+    padding: 0;
+    z-index: 2;
+    position: relative;
+}
+
+main h1 {
+    font-size: 2.5em;
+}
+
+h1 {
+    font-size: 2.5em;
+    animation: fadeIn 2s ease-in-out;
+    transition: color 0.3s ease;
+}
+h1:hover {
+    color: lightblue;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Estilo para secciones alternadas */
+section h2, section p {
+    margin: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 0;
+    border-radius: 5px;
+}
+
+section {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    background-size: cover;
+}
+
+section:nth-child(1) {
+    z-index: 1;
+    background: url('universidad1.jpg') no-repeat center center;
+    background-size: cover;
+    color: white;
+    margin: 0;
+    padding: 5em 0;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+section:nth-child(2) {
+    background: url('universidad2.jpg') no-repeat center center;
+    background-size: cover;
+    color: white;
+    padding: 0;
+    margin: 0;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+section:nth-child(3) {
+    background: url('universidad3.jpg') no-repeat center center;
+    background-size: cover;
+    color: white;
+    padding: 0;
+    margin: 0;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Ajustes generales para todas las secciones */
+section > .content-container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 1200px;
+    padding: 2em;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    color: white;
+}
+
+/* Ajustes para mostrar noticias horizontalmente */
+#noticias-eventos {
+    margin: 2em auto;
+    padding: 1em;
+    max-width: 1200px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: black;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.noticias {
+    display: flex;
+    gap: 1em;
+    flex-wrap: wrap;
+}
+
+.noticia {
+    flex: 1 1 calc(33.333% - 1em);
+    max-width: calc(33.333% - 1em);
+    padding: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    box-sizing: border-box;
+}
+
+.noticia h3 {
+    margin: 0 0 0.5em 0;
+    color: #003366;
+}
+
+.noticia p {
+    margin: 0.5em 0;
+    line-height: 1.5;
+}
+
+.noticia .fecha {
+    font-size: 0.9em;
+    color: #666;
+}
+
+#contacto {
+    margin: 2em auto;
+    max-width: 100%;
+    left: 0;
+    top: 100px;
+    width: 100%;
+    padding: 1em;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+#formulario-contacto {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    max-width: 600px;
+    width: 400px;
+}
+
+#formulario-contacto label {
+    font-weight: bold;
+    max-width: 600px;
+    width: 400px;
+}
+
+#formulario-contacto input, 
+#formulario-contacto textarea, 
+#formulario-contacto button {
+    width: 100%;
+    padding: 0.8em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+#formulario-contacto button {
+    background-color: #00509e;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#formulario-contacto button:hover {
+    background-color: #003366;
+}
+
+#boton-chat {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+#boton-chat button {
+    background-color: #00509e;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 1.5em;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#boton-chat button:hover {
+    background-color: #003366;
+}
+
+#testimonios {
+    margin: 2em auto;
+    padding: 2em;
+    background-color: #2d2d2d;
+    border-radius: 8px;
+    text-align: center;
+    max-width: 800px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#testimonios h2 {
+    color: whitesmoke;
+    margin-bottom: 1em;
+}
+
+.contenedor-testimonios {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+}
+
+.testimonio {
+    padding: 1em;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-style: italic;
+}
+
+.testimonio span {
+    display: block;
+    margin-top: 0.5em;
+    font-weight: bold;
+    color: #333;
+}
+.testimonio {
+    display: none;
+}
+
+.testimonio.active {
+    display: block;
+}
+.imagen-testimonio {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 0.5em;
+}
+#redes-sociales {
+    text-align: center;
+    margin-top: 30px;
+}
+
+#redes-sociales h2 {
+    color: white;
+    margin-bottom: 20px;
+}
+
+.social-icons a {
+    margin: 0 15px;
+}
+
+.social-icons img {
+    width: 40px;
+    height: 40px;
+    transition: transform 0.3s;
+}
+
+.social-icons img:hover {
+    transform: scale(1.2);
+}
+
+
+
+footer {
+    position: relative;
+    z-index: 2;
+    padding: 1em;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+    transition: background-image 1s ease-in-out;
+}
