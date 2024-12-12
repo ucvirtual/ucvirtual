@@ -26,6 +26,15 @@
         padding: 8px;
         margin: 5px 0;
     }
+    #noticias-eventos {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .noticia {
+        flex: 1 1 100%; /* Toma todo el ancho disponible */
+        max-width: 100%;
+    }
 }
 
 
